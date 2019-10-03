@@ -1,6 +1,7 @@
-DATE = `date`
-echo "<h1> ${DATE} </h1>" > ./public_html/index.html
+MY_DATE=`date`
+echo $MY_DATE
+echo "<h1> ${MY_DATE} </h1>" > ./public_html/index.html
 git status
 git add .
-git commit -m "Change ${DATE}"
+git commit -m "Change ${MY_DATE}"
 git push origin master
