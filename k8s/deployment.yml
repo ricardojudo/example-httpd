@@ -39,4 +39,16 @@ spec:
     targetPort: 8080
   selector:
     name: example-httpd
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: example-httpd
+spec:
+  host: example-httpd.okd1.pipeline.avl
+  to:
+    kind: Service
+    name: example-httpd
+
+
 
