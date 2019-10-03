@@ -1,0 +1,1 @@
+echo "<h1> $(date) </h1>" >> ./public_html/index.html
