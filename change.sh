@@ -1,5 +1,5 @@
-DATE = $(date)
-echo "<h1> ${DATE} </h1>" >> ./public_html/index.html
+DATE = `date`
+echo "<h1> ${DATE} </h1>" > ./public_html/index.html
 git status
 git add .
 git commit -m "Change ${DATE}"
