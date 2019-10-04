@@ -1,28 +1,28 @@
 apiVersion: v1
 kind: DeploymentConfig
 metadata:
-  name: example-httpd
+  name: example-httpd-triggers
   labels:
-    app: example-httpd
-    name: example-httpd
+    app: example-httpd-triggers
+    name: example-httpd-triggers
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: example-httpd
+        name: example-httpd-triggers
     spec:
       containers:
-      - name: example-httpd
-        image: 172.30.1.1:5000/avl/example-httpd:v1.0
+      - name: example-httpd-triggers
+        image: 172.30.1.1:5000/avl/example-httpd-triggers:v1.0
         ports:
         - name: http
           containerPort: 8080
         volumeMounts:                 
         - mountPath: /usr/local/apache2/logs
-          name: example-httpd-logs
+          name: example-httpd-triggers-logs
       volumes:                          
-        - name: example-httpd-logs
+        - name: example-httpd-triggers-logs
           emptyDir:
           medium: Memory
     triggers:
@@ -31,35 +31,35 @@ spec:
         imageChangeParams:
         automatic: true
         containerNames:
-          - example-httpd
+          - example-httpd-triggers
         from:
           kind: ImageStreamTag
-          name: 'example-httpd:v1.0'
+          name: 'example-httpd-triggers:v1.0'
           namespace: avl
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: example-httpd
+  name: example-httpd-triggers
   labels:
-    name: example-httpd
+    name: example-httpd-triggers
 spec:
   ports:
     # the port that this service should serve on
   - port: 8080
     targetPort: 8080
   selector:
-    name: example-httpd
+    name: example-httpd-triggers
 ---
 apiVersion: v1
 kind: Route
 metadata:
-  name: example-httpd
+  name: example-httpd-triggers
 spec:
-  host: example-httpd.okd1.pipeline.avl
+  host: example-httpd-triggers.okd1.pipeline.avl
   to:
     kind: Service
-    name: example-httpd
+    name: example-httpd-triggers
 
 
 
