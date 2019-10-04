@@ -25,17 +25,17 @@ spec:
         - name: example-httpd-logs
           emptyDir:
           medium: Memory
-    #triggers:
-    #  - type: ConfigChange
-    #  - type: ImageChange
-    #    imageChangeParams:
-    #    automatic: true
-    #    containerNames:
-    #      - example-httpd
-    #    from:
-    #      kind: ImageStreamTag
-    #      name: 'example-httpd:v1.0'
-    #      namespace: avl
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+        automatic: true
+        containerNames:
+          - example-httpd
+        from:
+          kind: ImageStreamTag
+          name: 'example-httpd:v1.0'
+          namespace: avl
 ---
 apiVersion: v1
 kind: Service
