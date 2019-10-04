@@ -25,11 +25,11 @@ spec:
         - name: example-httpd-logs
           emptyDir:
           medium: Memory
-    #triggers:
+    triggers:
     #  - type: ConfigChange
     #  - type: ImageChange
     #    imageChangeParams:
-    #    automatic: true
+    #    automatic: false
     #    containerNames:
     #      - example-httpd
     #    from:
