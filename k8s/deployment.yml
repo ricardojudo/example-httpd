@@ -25,7 +25,7 @@ spec:
         - name: example-httpd-logs
           emptyDir:
           medium: Memory
-    triggers: null
+    triggers: []
     #  - type: ConfigChange
     #  - type: ImageChange
     #    imageChangeParams:
